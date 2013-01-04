@@ -2,16 +2,22 @@ import win32api as api
 import win32con as con
 import re
 import string
+import time
+
+cd = 0.5
 
 def keyDown(vkcode):
     api.keybd_event(vkcode, 0, 0, 0)
+    time.sleep(cd)
 
 def keyUp(vkcode):
     api.keybd_event(vkcode, 0, con.KEYEVENTF_KEYUP, 0)
+    time.sleep(cd)
 
 def keyPress(vkcode):
     keyDown(vkcode)
     keyUp(vkcode)
+    time.sleep(cd)
 
 # vk map
 vkmap = {}

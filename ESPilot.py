@@ -10,7 +10,6 @@ def findTargetStarGate():
        'img/target_star_gate.bmp', 0.2)
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
-        time.sleep(0.5)
         return True
     return False
 
@@ -19,7 +18,6 @@ def findTargetStation():
        'img/target_station.bmp', 0.2)
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
-        time.sleep(0.5)
         return True
     return False
 
@@ -28,7 +26,6 @@ def findEnteringSpace():
         'img/entering_space.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
-        time.sleep(0.5)
         return True
     return False
 
@@ -37,24 +34,19 @@ def findEnteringStation():
         'img/entering_station.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
-        time.sleep(0.5)
         return True
     return False
 
 
 def jump():
     mouse.leftClick()
-    time.sleep(0.5)
     key.keyPressEx(sc.Warp)
-    time.sleep(1.5)
+    time.sleep(1)
     key.keyPressEx(sc.Activate)
-    time.sleep(0.5)
 
 def dock():
     mouse.leftClick()
-    time.sleep(0.5)
     key.keyPressEx(sc.Activate)
-    time.sleep(0.5)
 
 def autopilot():
     print '--> autopilot'
@@ -73,11 +65,8 @@ def autopilot():
                 break
             else:
                 mouse.moveToP(panel.middle(panel.Overview))
-                time.sleep(0.5)
                 mouse.leftClick()
-                time.sleep(0.5)
                 mouse.wheel(-12)
-                time.sleep(0.5)
 
         if finded == '':
             print "can't find any waypoint"

@@ -12,3 +12,6 @@ Unlock = 'alt'
 DronesEngage = 'f'
 DronesReturnOrbit = 'shift+alt+r'
 DronesReturn = 'shift+r'
+
+# window
+Map = 'f10'

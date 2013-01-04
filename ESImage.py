@@ -42,13 +42,6 @@ def extractTextR(rect, scale = 2):
     return extractText(rect[0], rect[1], rect[2], rect[3], scale)
 
 def test():
-    im = Image.open('img/font_lower.bmp')
-    # print [2 * i for i in im.size]
-    im = im.convert('RGB')
-    im = im.resize([2 * i for i in im.size])
-    im = ImageChops.invert(im)
-    im.show()
-    print tesser.image_to_string(im)
     pass
 
 if __name__ == '__main__':

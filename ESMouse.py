@@ -9,8 +9,14 @@ def moveTo(x, y):
     absY = int(y * 65535.0 / winHeight)
     api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_MOVE, absX, absY)
 
+def moveToP(point):
+    moveTo(point[0], point[1])
+
 def move(dx, dy):
     api.mouse_event(con.MOUSEEVENTF_MOVE, dx, dy)
+
+def moveP(point):
+    move(point[0], point[1])
 
 def leftDown():
     api.mouse_event(con.MOUSEEVENTF_LEFTDOWN, 0, 0)

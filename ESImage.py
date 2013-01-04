@@ -1,6 +1,10 @@
 import ImageGrab
+import Image
+import ImageEnhance
+import ImageChops
 import cv
 import cv2
+import pytesser.pytesser as tesser
 
 def capture(left, top, right, bottom):
     img = ImageGrab.grab((left, top, right, bottom))
@@ -25,9 +29,26 @@ def findImg(left, top, right, bottom, targetSource, threshould = 0.03):
     else:
         return (-1, -1)
 
+def findImgR(rect, targetSource, threshould = 0.03):
+    return findImg(rect[0], rect[1], rect[2], rect[3],
+        targetSource, threshould)
 
+def extractText(left, top, right, bottom, scale = 2):
+    im = capture(left, top, right, bottom)
+    im = im.resize([scale * i for i in im.size])
+    return tesser.image_to_string(im)
+
+def extractTextR(rect, scale = 2):
+    return extractText(rect[0], rect[1], rect[2], rect[3], scale)
 
 def test():
+    im = Image.open('img/font_lower.bmp')
+    # print [2 * i for i in im.size]
+    im = im.convert('RGB')
+    im = im.resize([2 * i for i in im.size])
+    im = ImageChops.invert(im)
+    im.show()
+    print tesser.image_to_string(im)
     pass
 
 if __name__ == '__main__':

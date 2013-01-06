@@ -6,26 +6,42 @@ import ESSpace as space
 import ESPilot as pilot
 
 def run():
-	print '--> mission Gone Berserk'
+	print '--> mission The Drug Bust'
 
 	# if not station.undock():
 	# 	return False
-
-	# pilot.autopilot()
 
 	# if not space.warpToMissionLocation():
 	# 	return False
 
 	# if not space.enableAllLowSlot():
-	#	return False
+	# 	return False
 
 	# if not space.activateAccelerationGate():
+	# 	return False
+
+	# if not space.openMissionDetail():
+	# 	return False
+
+	# if not space.lockBig():
+	# 	return False
+
+	# if not space.approach():
+	# 	return False
+
+	# if not space.openAfterBurn():
 	# 	return False
 
 	# if not space.launchDrones():
 	# 	return False
 
-	# if not space.openMissionDetail():
+	# if not space.fireOne():
+	# 	return False
+
+	# if not space.dronesEngage():
+	# 	return False
+
+	# if not space.pickMissionItem():
 	# 	return False
 
 	# if not space.missionObjectiveComplete():
@@ -34,11 +50,9 @@ def run():
 	# if not space.dronesReturn():
 	# 	return False
 
-	# if not space.setMissionWaypoint():
+	# if not space.backToAgentStation():
 	# 	return False
 
-	# pilot.autopilot()
 
-
-	print '<-- mission Gone Berserk\n'
+	print '<-- mission The Drug Bust\n'
 	return True

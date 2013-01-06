@@ -93,6 +93,7 @@ def autopilot():
             print 'entering space'
             time.sleep(4)
 
+    time.sleep(1)
     print '<-- autopilot\n'
 
 

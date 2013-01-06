@@ -59,6 +59,14 @@ def findCompleteMission():
         return True
     return False
 
+def findRequestMission():
+    x, y = image.findImgR(panel.MissionRight,
+        'img/request_mission.bmp')
+    if x != -1 and y != -1:
+        mouse.moveTo(x, y)
+        return True
+    return False
+
 
 def undock():
     print '--> undock'
@@ -87,8 +95,7 @@ def startConversation(agentPicSource):
 
     if not findAgent(agentPicSource):
         return False
-    mouse.leftClick()
-    mouse.leftClick()
+    mouse.doubleClick()
 
     print 'wait until conversation start'
     while not findInfo():
@@ -103,7 +110,6 @@ def acceptMission():
     if not findAccept():
         return False
     mouse.leftClick()
-    time.wait(0.5)
     mouse.move(0, 50)
 
     print 'wait until accepting mission'
@@ -115,9 +121,29 @@ def acceptMission():
     mouse.leftClick()
 
     print '<-- accept mission\n'
+    return True
+
+def completeMission():
+    print '--> complete mission\n'
+
+    if not findCompleteMission():
+        return False
+    mouse.leftClick()
+
+    print 'wait until complete mission'
+    while not findRequestMission():
+        time.sleep(0.1)
+
+    if not findX():
+        return False
+    mouse.leftClick()
+
+    print '<-- complete mission\n'
+    return True
 
 def test():
-    startConversation('img/agent.bmp')
+    # startConversation('img/agent.bmp')
+    completeMission()
 
 if __name__ == '__main__':
     test()

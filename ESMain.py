@@ -7,6 +7,12 @@ import ESSpace as space
 import ESShortcut as sc
 
 import ESMissionGoneBerserk as gone_berserk
+import ESMissionTheDrugBust as the_drug_bust
+import ESMissionUnauthorizedMilitaryPresence as unauthorized_military_presence
+import ESMissionAvengeAFallenComrade as avenge_a_fallen_comrade
+import ESMissionCustomsInterdictian1 as customs_interdictian_1
+import ESMissionCustomsInterdictian2 as customs_interdictian_2
+import ESMissionDeadlyArrival as deadly_arrival
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -15,14 +21,22 @@ def inStation():
         return True
     return False
 
-bots = {'Gone Berserk':gone_berserk}
+bots = {'Gone Berserk':gone_berserk,
+        'The Drug Bust':the_drug_bust,
+        'Unauthorized Militarg Presence':unauthorized_military_presence,
+        'Avenge a Fallen Comrade':avenge_a_fallen_comrade,
+        'Customs lnterdictian (1 of 2)':customs_interdictian_1,
+        'Customs lnterdictian (2 of 2)':customs_interdictian_2,
+        'Deadlg Arrival':deadly_arrival,
+        }
+
+agent = 'img/agent.bmp'
 
 def run():
     # if not inStation():
     #     print 'Error: Must begin at station.'
     #     return
 
-    # agent = 'img/agent.bmp'
     # print 'mission bot begin. \n'
     # while True:
 
@@ -34,25 +48,35 @@ def run():
     #     if mission not in bots:
     #         print 'Error: Cant find bot for mission \'' + mission + '\'.'
     #         return
-    #     bot = bots[if not mission]:
+    #     bot = bots[mission]
 
     #     if not station.acceptMission():
     #         print 'Error: Accept mission failed.'
     #         return
 
+    #     if not space.setMissionWaypoint():
+    #         print 'Error: Cant set mission waypoint.'
+    #         return
+
         # TODO:test
-        bot = bots['Gone Berserk']
+        bot = bots['Deadlg Arrival']
 
         # TODO:test
         mouse.moveTo(1000, 100)
         mouse.leftClick()
 
-        if not space.setMissionWaypoint():
-            print 'Error: Cant set mission waypoint.'
-            return
-
         if not bot.run():
             print 'Error: Mission abort.'
+            return
+
+        if not station.startConversation(agent):
+            print 'Error: Could not find target agent.'
+            return
+
+        if not station.completeMission():
+            print 'Error: Complete mission failed'
+            return
+
 
         # TODO
         # break

@@ -6,7 +6,7 @@ import ESSpace as space
 import ESPilot as pilot
 
 def run():
-	print '--> mission Gone Berserk'
+	print '--> mission Avenge a Fallen Comrade'
 
 	# if not station.undock():
 	# 	return False
@@ -17,15 +17,33 @@ def run():
 	# 	return False
 
 	# if not space.enableAllLowSlot():
-	#	return False
+	# 	return False
 
 	# if not space.activateAccelerationGate():
+	# 	return False
+
+	# if not space.lockTarget('img/habitat.bmp'):
+	# 	return False
+
+	# if not space.openAfterBurn():
+	# 	return False
+
+	# if not space.approachFor(60):
+	# 	return False
+
+	# if not space.lockTarget('img/habitat.bmp'):
+	# 	return False
+
+	# if not space.openMissionDetail():
 	# 	return False
 
 	# if not space.launchDrones():
 	# 	return False
 
-	# if not space.openMissionDetail():
+	# if not space.fireOne():
+	# 	return False
+
+	# if not space.dronesEngage():
 	# 	return False
 
 	# if not space.missionObjectiveComplete():
@@ -39,6 +57,5 @@ def run():
 
 	# pilot.autopilot()
 
-
-	print '<-- mission Gone Berserk\n'
+	print '<-- mission Avenge a Fallen Comrade\n'
 	return True

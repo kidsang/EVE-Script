@@ -36,6 +36,13 @@ def leftClick():
     api.mouse_event(con.MOUSEEVENTF_LEFTUP, 0, 0)
     time.sleep(cd)
 
+def doubleClick():
+    api.mouse_event(con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+    api.mouse_event(con.MOUSEEVENTF_LEFTUP, 0, 0)
+    api.mouse_event(con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+    api.mouse_event(con.MOUSEEVENTF_LEFTUP, 0, 0)
+    time.sleep(cd)
+
 def rightDown():
     api.mouse_event(con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
     time.sleep(cd)

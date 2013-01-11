@@ -456,8 +456,10 @@ def activateAccelerationGate():
 	mouse.leftClick()
 	key.keyPressEx(sc.Activate)
 
+	print 'wait to activate gate'
+	while not findWarpDriveActive():
+		time.sleep(0.1)
 	print 'wait until reach location'
-	time.sleep(4)
 	while findWarpDriveActive():
 		time.sleep(0.1)
 

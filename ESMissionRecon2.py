@@ -11,8 +11,8 @@ import time
 def run():
 	print '--> mission Recon 2'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
 	if not space.warpToMissionLocation():
 		return False

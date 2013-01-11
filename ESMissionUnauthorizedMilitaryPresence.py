@@ -36,6 +36,9 @@ def run():
 	if not space.approachFor(90):
 		return False
 
+	if not space.lockTarget('img/blood_raider_personnel.bmp'):
+		return False
+
 	if not space.launchDrones():
 		return False
 

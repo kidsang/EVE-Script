@@ -52,11 +52,11 @@ bots = {'Gone Berserk':gone_berserk,
         'Labors of War (2 of 3)':labors_of_war_2,
         'Labors of War (3 of 3)':labors_of_war_3,
         'Pirate Intrusion':pirate_intrusion,
-        'The Hidden Stash':the_hidden_stash,
+        'The Hidden Stash':the_hidden_stash, #v
         'Mission of Hem;':mission_of_mercy,
         'Renon (1 of 3)':recon_1,
-        'Renon (2 of 3)':recon_2,
-        'Renon (3 of 3)':recon_3,
+        'Renon (2 of 3)':recon_2,#v
+        'Renon (3 of 3)':recon_3,#v
         'The Damsel In Distress':the_damsel_in_distress, #v
         'The Sansha Spies':the_sansha_spies, #v
         'Tenhnalaginal Secrets (1 of 3)':technological_secrets_1,
@@ -99,7 +99,7 @@ def run():
             return
 
         # # TODO:test
-        # bot = bots['Unauthorized Militarg Presence']
+        # bot = bots['Renon (2 of 3)']
 
         # # TODO:test
         # mouse.moveToP(panel.middle(panel.Full))

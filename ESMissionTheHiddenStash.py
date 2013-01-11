@@ -8,58 +8,58 @@ import ESPilot as pilot
 def run():
 	print '--> mission The Hidden Stash'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# pilot.autopilot()
+	pilot.autopilot()
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# if not space.enableAllLowSlot():
-	# 	return False
+	if not space.enableAllLowSlot():
+		return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# if not space.openMissionDetail():
-	# 	return False
+	if not space.openMissionDetail():
+		return False
 
-	# if not space.lockTarget('img/warehouse.bmp'):
-	# 	return False
+	if not space.lockTarget('img/warehouse.bmp'):
+		return False
 
-	# if not space.openAfterBurn():
-	# 	return False
+	if not space.openAfterBurn():
+		return False
 
-	# if not space.approach():
-	# 	return False
+	if not space.approach():
+		return False
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.launchDrones():
+		return False
 
-	# if not space.fireOne():
-	# 	return False
+	if not space.fireOne():
+		return False
 
-	# if not space.dronesEngage():
-	# 	return False
+	if not space.dronesEngage():
+		return False
 
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	if not space.dronesReturn():
+		return False
 
-	# # there are two cargos
-	# if not space.pickMissionItem():
-	# 	return False
+	# there are two cargos
+	if not space.pickMissionItem():
+		return False
 
-	# if not space.pickMissionItem():
-	# 	return False
+	if not space.pickMissionItem():
+		return False
 
-	# if not space.setMissionWaypoint():
-	# 	return False
+	if not space.setMissionWaypoint():
+		return False
 
-	# pilot.autopilot()
+	pilot.autopilot()
 
 	print '<-- mission The Hidden Stash\n'
 	return True

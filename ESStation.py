@@ -141,9 +141,101 @@ def completeMission():
     print '<-- complete mission\n'
     return True
 
+def openInventory():
+    print '--> open inventory'
+
+    x, y = image.findImgR(panel.Menu, 'img/inventory.bmp', 0.2)
+    if x < 0:
+        return False
+    mouse.moveTo(x, y)
+    mouse.leftClick()
+    time.sleep(1)
+
+    print '<-- open inventory\n'
+    return True
+
+def closeInventory():
+    print '--> close inventory'
+
+    mouse.moveToP(panel.middle(panel.Inventory))
+    x, y = image.findImgR(panel.Inventory, 'img/x.bmp')
+    if x < 0:
+        return False
+    mouse.moveTo(x, y)
+    mouse.leftClick()
+    time.sleep(1)
+    
+    print '<-- close inventory\n'
+    return True
+
+def loadItem(item):
+    print '--> load item ' + item
+
+    x, y = image.findImgR(panel.Inventory, 'img/item_hangar.bmp', 0.2)
+    if x > 0:
+        mouse.moveTo(x, y)
+        mouse.leftClick()
+        time.sleep(1.5)
+
+    x = -1
+    x, y = image.findImgR(panel.Inventory, item)
+    while x < 0:
+        mouse.moveToP(panel.middle(panel.Inventory))
+        mouse.leftClick()
+        mouse.wheel(-12)
+        mouse.move(300, 0)
+        x, y = image.findImgR(panel.Inventory, item)
+
+    mouse.moveTo(x, y)
+    mouse.leftDown()
+    x, y = image.findImgR(panel.Inventory, 'img/ship.bmp', 0.2)
+    if x < 0:
+        mouse.leftUp()
+        return False
+    mouse.moveTo(x, y)
+    mouse.leftUp()
+    time.sleep(1)
+
+    print '<-- load item ' + item + '\n'
+    return True
+
+def unloadItem(item):
+    print '--> unload item ' + item
+
+    x, y = image.findImgR(panel.Inventory, 'img/ship.bmp', 0.2)
+    if x > 0:
+        mouse.moveTo(x, y)
+        mouse.leftClick()
+        time.sleep(1.5)
+
+    x = -1
+    x, y = image.findImgR(panel.Inventory, item)
+    while x < 0:
+        mouse.moveToP(panel.middle(panel.Inventory))
+        mouse.leftClick()
+        mouse.wheel(-12)
+        mouse.move(300, 0)
+        x, y = image.findImgR(panel.Inventory, item)
+
+    mouse.moveTo(x, y)
+    mouse.leftDown()
+    x, y = image.findImgR(panel.Inventory, 'img/item_hangar.bmp', 0.2)
+    if x < 0:
+        mouse.leftUp()
+        return False
+    mouse.moveTo(x, y)
+    mouse.leftUp()
+    time.sleep(1)
+
+    print '<-- unload item ' + item + '\n'
+    return True
+
 def test():
-    # startConversation('img/agent.bmp')
-    completeMission()
+    # openInventory()
+    # loadItem('img/dna_sample.bmp')
+    # unloadItem('img/dna_sample.bmp')
+    # closeInventory()
+    pass
 
 if __name__ == '__main__':
     test()

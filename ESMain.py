@@ -5,6 +5,7 @@ import ESPanel as panel
 import ESStation as station
 import ESSpace as space
 import ESShortcut as sc
+import ESPilot as pilot
 
 import ESMissionGoneBerserk as gone_berserk
 import ESMissionTheDrugBust as the_drug_bust
@@ -13,6 +14,20 @@ import ESMissionAvengeAFallenComrade as avenge_a_fallen_comrade
 import ESMissionCustomsInterdictian1 as customs_interdictian_1
 import ESMissionCustomsInterdictian2 as customs_interdictian_2
 import ESMissionDeadlyArrival as deadly_arrival
+import ESMissionLaborsOfWar1 as labors_of_war_1
+import ESMissionLaborsOfWar2 as labors_of_war_2
+import ESMissionLaborsOfWar3 as labors_of_war_3
+import ESMissionPirateIntrusion as pirate_intrusion
+import ESMissionTheHiddenStash as the_hidden_stash
+import ESMissionMissionOfMercy as mission_of_mercy
+import ESMissionRecon1 as recon_1
+import ESMissionRecon2 as recon_2
+import ESMissionRecon3 as recon_3
+import ESMissionTheDamselInDistress as the_damsel_in_distress
+import ESMissionTheSanshaSpies as the_sansha_spies
+import ESMissionTechnologicalSecrets1 as technological_secrets_1
+import ESMissionTechnologicalSecrets2 as technological_secrets_2
+import ESMissionTechnologicalSecrets3 as technological_secrets_3
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -28,6 +43,20 @@ bots = {'Gone Berserk':gone_berserk,
         'Customs lnterdictian (1 of 2)':customs_interdictian_1,
         'Customs lnterdictian (2 of 2)':customs_interdictian_2,
         'Deadlg Arrival':deadly_arrival,
+        'Labors of War (1 of 3)':labors_of_war_1,
+        'Labors of War (2 of 3)':labors_of_war_2,
+        'Labors of War (3 of 3)':labors_of_war_3,
+        'Pirate Intrusion':pirate_intrusion,
+        'The Hidden Stash':the_hidden_stash,
+        'Mission of Hem;':mission_of_mercy,
+        'Renon (1 of 3)':recon_1,
+        'Renon (2 of 3)':recon_2,
+        'Renon (3 of 3)':recon_3,
+        'The Damsel In Distress':the_damsel_in_distress, #v
+        'The Sansha Spies':the_sansha_spies,
+        'Tenhnalaginal Secrets (1 of 3)':technological_secrets_1,
+        'Tenhnalaginal Secrets (2 of 3)':technological_secrets_2,
+        'Tenhnalaginal Secrets (3 of 3)':technological_secrets_3,
         }
 
 agent = 'img/agent.bmp'
@@ -50,6 +79,7 @@ def run():
     #         return
     #     bot = bots[mission]
 
+    #     print 'Mission - ' + mission
     #     if not station.acceptMission():
     #         print 'Error: Accept mission failed.'
     #         return
@@ -59,7 +89,7 @@ def run():
     #         return
 
         # TODO:test
-        bot = bots['Deadlg Arrival']
+        bot = bots['Tenhnalaginal Secrets (3 of 3)']
 
         # TODO:test
         mouse.moveTo(1000, 100)
@@ -77,6 +107,9 @@ def run():
             print 'Error: Complete mission failed'
             return
 
+        # if bot == bots['Tenhnalaginal Secrets (2 of 3)']:
+        #     station.undock()
+        #     pilot.autopilot()
 
         # TODO
         # break

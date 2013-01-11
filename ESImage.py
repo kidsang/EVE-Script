@@ -33,6 +33,26 @@ def findImgR(rect, targetSource, threshould = 0.03):
     return findImg(rect[0], rect[1], rect[2], rect[3],
         targetSource, threshould)
 
+def findColor(left, top, right, bottom, colstr):
+    match = (int(colstr[:2], 16), int(colstr[2:4], 16), int(colstr[4:], 16))
+    img = capture(left, top, right, bottom)
+    data = img.getdata()
+    find = False
+    for y in xrange(img.size[1]):
+        for x in xrange(img.size[0]):
+            if data[x + y * img.size[0]] == match:
+                find = True
+                break
+        if find:
+            break
+
+    if not find:
+        return -1, -1
+    return x + left, y + top
+
+def findColorR(rect, colstr):
+    return findColor(rect[0], rect[1], rect[2], rect[3], colstr)
+
 def extractText(left, top, right, bottom, scale = 2):
     im = capture(left, top, right, bottom)
     im = im.resize([scale * i for i in im.size])
@@ -42,6 +62,7 @@ def extractTextR(rect, scale = 2):
     return extractText(rect[0], rect[1], rect[2], rect[3], scale)
 
 def test():
+    print findColor(0, 0, 500, 500, 'c11313')
     pass
 
 if __name__ == '__main__':

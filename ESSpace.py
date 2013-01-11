@@ -131,6 +131,14 @@ def findTarget(imgpath):
         return True
     return False
 
+def findEnemy():
+    x, y = image.findColorR(panel.Overview, 'c11313')
+    if x != -1 and y != -1:
+        mouse.moveTo(x, y)
+        return True
+    return False
+
+
 def findCan():
     x, y = image.findImgR(panel.Overview,
         'img/can.bmp', 0.2)
@@ -193,7 +201,7 @@ def findWarpDriveActive():
 
 def findAccelerationGate():
     x, y = image.findImgR(panel.Overview,
-        'img/acceleration_gate.bmp', 0.2)
+        'img/acceleration_gate.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
         return True
@@ -407,6 +415,32 @@ def pickMissionItem():
 	print '<-- picking mission item\n'
 	return True
 
+def pickWreck():
+	print '--> picking wreck'
+
+	if not findTarget('img/wreck.bmp'):
+		return False
+	mouse.leftClick()
+	key.keyPressEx(sc.Approach)
+
+	if not findOpenCargo():
+		return False
+	mouse.leftClick()
+
+	print 'wait until cargo open'
+	while not findLootAll():
+		time.sleep(0.1)
+	mouse.leftClick()
+
+	time.sleep(2)
+	if not findXFull():
+		return False
+	mouse.leftClick()
+
+	print '<-- picking wreck\n'
+	return True
+
+
 def activateAccelerationGate():
 	print '--> activate acceleration gate\n'
 
@@ -507,10 +541,15 @@ def dronesReturn():
 	print '--> drones return'
 
 	key.keyPressEx(sc.DronesReturn)
+	key.keyPressEx(sc.DronesReturn)
 
 	print 'wait until drones return'
 	while findIdle() or findReturning() or findFighting():
 		time.sleep(0.1)
+		
+	if not findDronesInSpace():
+		return False
+	mouse.leftClick()
 
 	print '<-- drones return\n'
 	return True
@@ -519,7 +558,8 @@ def test():
 	mouse.moveTo(1000, 300)
 	mouse.leftClick()
 	# findTarget('img/blood_raider_personnel.bmp')
-	lockTarget('img/blood_raider_personnel.bmp')
+	# lockTarget('img/blood_raider_personnel.bmp')
+	print findEnemy()
 	pass
 
 if __name__ == '__main__':

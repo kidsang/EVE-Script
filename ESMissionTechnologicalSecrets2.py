@@ -10,19 +10,19 @@ import ESPanel as panel
 def run():
 	print '--> mission Technological Secrets (2 of 3)'
 
-	# # this is a transport mission
-	# if not (station.openInventory() \
-	# 	and station.loadItem('img/dna_sample.bmp') \
-	# 	and station.closeInventory()):
-	# 	return False
+	# this is a transport mission
+	if not (station.openInventory() \
+		and station.loadItem('img/dna_sample.bmp') \
+		and station.closeInventory()):
+		return False
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# pilot.autopilot()
+	pilot.autopilot()
 
-	# if not space.setMissionWaypoint():
-	# 	return False
+	if not space.setMissionWaypoint():
+		return False
 		
 	print '<-- mission Technological Secrets (2 of 3)\n'
 	return True

@@ -11,78 +11,83 @@ import ESPanel as panel
 def run():
 	print '--> mission Foreign Investment'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	pilot.autopilot()
 
-	# if not space.enableAllLowSlot():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# # there are guards
-	# if not space.launchDrones():
-	# 	return False
+	if not space.enableAllLowSlot():
+		return False
 
-	# if not space.openMissionDetail():
-	# 	return False
+	# there are guards
+	if not space.launchDrones():
+		return False
 
-	# if not space.openAfterBurn():
-	# 	return False
+	if not space.openMissionDetail():
+		return False
 
-	# while space.findEnemy():
-	# 	mouse.leftClick()
-	# 	key.keyPressEx(sc.Lock)
-	# 	time.sleep(8)
-	# 	space.fireOne()
-	# 	time.sleep(15)
-	# 	mouse.move(-200, 0)
+	if not space.openAfterBurn():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	while space.findEnemy():
+		mouse.leftClick()
+		key.keyPressEx(sc.Lock)
+		time.sleep(8)
+		space.fireOne()
+		time.sleep(15)
+		mouse.move(-200, 0)
 
-	# if not space.findTarget("img/acceleration_gate.bmp"):
-	# 	return False
-	# mouse.leftClick()
-	# key.keyPressEx(sc.Activate)
+	if not space.dronesReturn():
+		return False
 
-	# space.enterStartMap()
-	# mouse.moveToP(panel.middle(panel.Message))
-	# mouse.leftDown()
-	# mouse.move(500, 200)
-	# mouse.leftUp()
+	if not space.findTarget("img/acceleration_gate.bmp"):
+		return False
+	mouse.leftClick()
+	key.keyPressEx(sc.Activate)
 
-	# print 'wait until activate gate'
-	# while not space.findWarpDriveActive():
-	# 	time.sleep(0.1)
-	# print 'wait until reach location'
-	# while space.findWarpDriveActive():
-	# 	time.sleep(0.1)
+	space.enterStartMap()
+	mouse.moveToP(panel.middle(panel.Message))
+	mouse.leftDown()
+	mouse.move(500, 200)
+	mouse.leftUp()
 
-	# space.exitStartMap()
+	print 'wait until activate gate'
+	while not space.findWarpDriveActive():
+		time.sleep(0.1)
+	print 'wait until reach location'
+	while space.findWarpDriveActive():
+		time.sleep(0.1)
 
-	# # pocket 1
-	# mouse.move(-200, 0)
-	# if not space.lockTarget("img/gallente_company_hq.bmp"):
-	# 	return False
+	space.exitStartMap()
 
-	# if not space.approach():
-	# 	return False
+	# pocket 1
+	mouse.move(-200, 0)
+	if not space.lockTarget("img/gallente_company_hq.bmp"):
+		return False
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.approach():
+		return False
 
-	# if not space.fireOne():
-	# 	return False
+	if not space.launchDrones():
+		return False
 
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.fireOne():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.backToAgentStation():
-	# 	return False
+	if not space.dronesReturn():
+		return False
+
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Foreign Investment\n'
 	return True

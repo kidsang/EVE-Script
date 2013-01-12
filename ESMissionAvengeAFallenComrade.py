@@ -31,10 +31,10 @@ def run():
 	# if not space.approachFor(60):
 	# 	return False
 
-	# if not space.lockTarget('img/habitat.bmp'):
+	# if not space.openMissionDetail():
 	# 	return False
 
-	# if not space.openMissionDetail():
+	# if not space.lockTarget('img/habitat.bmp'):
 	# 	return False
 
 	# if not space.launchDrones():

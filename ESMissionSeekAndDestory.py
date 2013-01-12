@@ -42,9 +42,6 @@ def run():
 		time.sleep(15)
 		mouse.move(-200, 0)
 
-	if not space.dronesReturn():
-		return False
-
 	if not space.missionObjectiveComplete():
 		return False
 

@@ -4,6 +4,7 @@ import ESImage as image
 import ESStation as station
 import ESSpace as space
 import ESPilot as pilot
+import ESPanel as panel
 
 def run():
 	print '--> mission Customs lnterdictian (1 of 2)'
@@ -13,15 +14,18 @@ def run():
 
 	# pilot.autopilot()
 
-	# if not space.warpToMissionLocation():
-	# 	return False
-
-	# if not space.enableAllLowSlot():
-	# 	return False
+	# space.warpToMissionLocation()
 
 	# this mission don't have a acceleration gate
 	# and will pop up a dialog
-	# TODO: add ok
+	# x = -1
+	# while x < 0:
+	# 	x, y = image.findImgR(panel.Full, 'img/close.bmp')
+	# mouse.moveTo(x, y)
+	# mouse.leftClick()
+
+	# if not space.enableAllLowSlot():
+	# 	return False
 
 	# if not space.openMissionDetail():
 	# 	return False

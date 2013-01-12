@@ -28,7 +28,7 @@ def run():
 	# if not space.activateAccelerationGate():
 	# 	return False
 
-	# # # pocket 1
+	# # pocket 1
 	# mouse.move(-200, 0)
 	# if not space.findTarget("img/acceleration_gate.bmp"):
 	# 	return False
@@ -57,72 +57,72 @@ def run():
 	# if not space.activateAccelerationGate():
 	# 	return False
 
-	# pocket 2
+	# # pocket 2
 		
 	# if not space.openAfterBurn():
 	# 	return False
 
-	# x = -1
-	# while x < 0:
-	# 	x, y = image.findImgR(panel.Full, 'img/close.bmp')
-	# 	time.sleep(0.1)
-	# mouse.moveTo(x, y)
-	# mouse.leftClick()
-	# time.sleep(1)
+	x = -1
+	while x < 0:
+		x, y = image.findImgR(panel.Full, 'img/close.bmp')
+		time.sleep(0.1)
+	mouse.moveTo(x, y)
+	mouse.leftClick()
+	time.sleep(1)
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.launchDrones():
+		return False
 
-	# while space.findEnemy():
-	# 	mouse.leftClick()
-	# 	space.approach()
-	# 	key.keyPressEx(sc.Lock)
-	# 	time.sleep(8)
-	# 	space.fireOne()
-	# 	time.sleep(15)
-	# 	mouse.move(-200, 0)
+	while space.findEnemy():
+		mouse.leftClick()
+		space.approach()
+		key.keyPressEx(sc.Lock)
+		time.sleep(8)
+		space.fireOne()
+		time.sleep(15)
+		mouse.move(-200, 0)
 
-	# if not space.dronesReturn():
-	# 	return False
+	if not space.dronesReturn():
+		return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# # pocket 3
+	# pocket 3
 	
-	# x = -1
-	# while x < 0:
-	# 	x, y = image.findImgR(panel.Full, 'img/close.bmp')
-	# 	time.sleep(0.1)
-	# mouse.moveTo(x, y)
-	# mouse.leftClick()
-	# time.sleep(1)	
+	x = -1
+	while x < 0:
+		x, y = image.findImgR(panel.Full, 'img/close.bmp')
+		time.sleep(0.1)
+	mouse.moveTo(x, y)
+	mouse.leftClick()
+	time.sleep(1)	
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.launchDrones():
+		return False
 		
-	# if not space.openAfterBurn():
-	# 	return False
+	if not space.openAfterBurn():
+		return False
 
-	# while space.findEnemy():
-	# 	mouse.leftClick()
-	# 	space.approach()
-	# 	key.keyPressEx(sc.Lock)
-	# 	time.sleep(8)
-	# 	space.fireOne()
-	# 	time.sleep(15)
-	# 	mouse.move(-200, 0)
+	while space.findEnemy():
+		mouse.leftClick()
+		space.approach()
+		key.keyPressEx(sc.Lock)
+		time.sleep(8)
+		space.fireOne()
+		time.sleep(15)
+		mouse.move(-200, 0)
 
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	if not space.dronesReturn():
+		return False
 
-	# if not space.setMissionWaypoint():
-	# 	return False
+	if not space.setMissionWaypoint():
+		return False
 
-	# pilot.autopilot() 
+	pilot.autopilot() 
 
 	print '<-- mission Silence The Informant\n'
 	return True

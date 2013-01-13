@@ -48,9 +48,12 @@ def run():
 	if not space.dronesReturn():
 		return False
 
-	space.setMissionWaypoint()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		space.exitStartMap()
+		space.backToAgentStation()
 
-	pilot.autopilot()
 
 	print '<-- mission Seek And Destory\n'
 	return True

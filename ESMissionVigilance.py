@@ -4,16 +4,15 @@ import ESImage as image
 import ESStation as station
 import ESSpace as space
 import ESPilot as pilot
+import ESShortcut as sc
 import ESPanel as panel
 import time
 
 def run():
-	print '--> mission Trimming the Fat'
+	print '--> mission Vigilance'
 
 	if not station.undock():
 		return False
-
-	pilot.autopilot()
 
 	if not space.warpToMissionLocation():
 		return False
@@ -21,29 +20,26 @@ def run():
 	if not space.enableAllLowSlot():
 		return False
 
+	if not space.openAfterBurn():
+		return False
+
+	while not space.lockTarget('img/suspicious.bmp'):
+		time.sleep(5)
+
 	if not space.launchDrones():
 		return False
 
-	if not space.openMissionDetail():
+	if not space.dronesEngage():
 		return False
 
-	x = -1
-	while x < 0:
-		x, y = image.findImgR(panel.Full, 'img/close.bmp')
-		time.sleep(0.1)
-	mouse.moveTo(x, y)
-	mouse.leftClick()
-
-	if not space.missionObjectiveComplete():
+	if not space.pickMissionItem():
 		return False
 
 	if not space.dronesReturn():
 		return False
 
-	if not space.setMissionWaypoint():
+	if not space.backToAgentStation():
 		return False
 
-	pilot.autopilot()
-
-	print '<-- mission Trimming the Fat\n'
+	print '<-- mission Vigilance\n'
 	return True

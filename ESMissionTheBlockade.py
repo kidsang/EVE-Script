@@ -10,43 +10,25 @@ import time
 def run():
 	print '--> mission The Blockade'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# if not space.enableAllLowSlot():
-	# 	return False
+	if not space.enableAllLowSlot():
+		return False
 
-	# if not space.openMissionDetail():
-	# 	return False
+	if not space.openMissionDetail():
+		return False
 
-	# if not space.openAfterBurn():
-	# 	return False
-
-	# if not space.launchDrones():
-	# 	return False
-
-	while not space.findV():
-		if not space.findEnemy():
-			dronesReturn()
-			time.sleep(10)
-			launchDrones()
-			continue
-		mouse.leftClick()
-		key.keyPressEx(sc.Lock)
-		# key.keyPressEx(sc.Keep)
-		space.approach()
-		time.sleep(8)
-		space.fireOne()
-		time.sleep(15)
-		mouse.move(-200, 0)
-
-	if not space.dronesReturn():
+	if not space.launchDrones():
 		return False
 
 	if not space.missionObjectiveComplete():
+		return False
+
+	if not space.dronesReturn():
 		return False
 
 	space.backToAgentStation()

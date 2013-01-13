@@ -8,7 +8,7 @@ import ESPanel as panel
 import time
 
 def run():
-	print '--> mission Trimming the Fat'
+	print '--> mission Saving A Mans Career'
 
 	if not station.undock():
 		return False
@@ -21,20 +21,24 @@ def run():
 	if not space.enableAllLowSlot():
 		return False
 
+	if space.findClose():
+		mouse.leftClick()
+
+	if not space.lockTarget('img/sangrel_minn.bmp'):
+		return False
+
+	space.openAfterBurn()
+
+	space.approachFor(30)
+
 	if not space.launchDrones():
 		return False
 
-	if not space.openMissionDetail():
-		return False
+	space.fireOne()
 
-	x = -1
-	while x < 0:
-		x, y = image.findImgR(panel.Full, 'img/close.bmp')
-		time.sleep(0.1)
-	mouse.moveTo(x, y)
-	mouse.leftClick()
+	space.dronesEngage()
 
-	if not space.missionObjectiveComplete():
+	if not space.pickMissionItem():
 		return False
 
 	if not space.dronesReturn():
@@ -45,5 +49,5 @@ def run():
 
 	pilot.autopilot()
 
-	print '<-- mission Trimming the Fat\n'
+	print '<-- mission Saving A Mans Career\n'
 	return True

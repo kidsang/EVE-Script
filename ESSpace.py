@@ -6,6 +6,14 @@ import ESShortcut as sc
 import time
 
 
+def findRepairShop():
+    x, y = image.findImgR(panel.StationServices,
+        'img/repair_shop.bmp')
+    if x != -1 and y != -1:
+        mouse.moveTo(x + 20, y + 33)
+        return True
+    return False
+
 def findAgentMission():
     x, y = image.findImgR(panel.Info,
         'img/agent_mission.bmp')
@@ -78,6 +86,22 @@ def findV():
 def findX():
     x, y = image.findImgR(panel.MissionDetails,
         'img/x.bmp')
+    if x != -1 and y != -1:
+        mouse.moveTo(x, y)
+        return True
+    return False
+
+def findClose():
+    x, y = image.findImgR(panel.Full,
+        'img/close.bmp')
+    if x != -1 and y != -1:
+        mouse.moveTo(x, y)
+        return True
+    return False
+
+def findOK():
+    x, y = image.findImgR(panel.Full,
+        'img/ok.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
         return True
@@ -456,9 +480,17 @@ def activateAccelerationGate():
 	mouse.leftClick()
 	key.keyPressEx(sc.Activate)
 
+	time.sleep(1)
+	if findClose() or findOK():
+		mouse.leftClick()
+		mouse.move(0, -200)
 	print 'wait to activate gate'
 	while not findWarpDriveActive():
 		time.sleep(0.1)
+	time.sleep(4)
+	if findClose() or findOK():
+		mouse.leftClick()
+		mouse.move(0, -200)
 	print 'wait until reach location'
 	while findWarpDriveActive():
 		time.sleep(0.1)
@@ -523,7 +555,7 @@ def missionObjectiveComplete():
 		time.sleep(0.5)
 
 	mouse.moveToP(panel.middle(panel.MissionDetails))
-	mouse.leftClick()
+	time.sleep(0.5)
 	if not findX():
 		return False
 	mouse.leftClick()
@@ -552,16 +584,61 @@ def dronesReturn():
 	if not findDronesInSpace():
 		return False
 	mouse.leftClick()
-
 	print '<-- drones return\n'
+	return True
+
+def repair():
+	print '--> repair'
+	x, y = image.findImgR(panel.StationServices, 'img/repair_shop.bmp')
+	if x > 0:
+		mouse.moveTo(x, y)
+		mouse.leftClick()
+
+	print 'wait until open repair facilities'
+	x = -1
+	while x < 0:
+		x, y = image.findImgR(panel.Full, 'img/repair_facilities.bmp')
+	mouse.moveTo(x, y + 70)
+	mouse.leftClick()
+	key.keyPressEx('ctrl+a')
+
+	x, y = image.findImgR(panel.Full, 'img/repair_item.bmp')
+	mouse.moveTo(x, y)
+	mouse.leftClick()
+
+	print 'wait..'
+	x = -1
+	while x < 0:
+		x, y = image.findImgR(panel.Full, 'img/pick_new_item.bmp')
+
+	x, y = image.findImgR(panel.Full, 'img/repair_all.bmp')
+	if x > 0:
+		mouse.moveTo(x, y)
+		mouse.leftClick()
+		print 'repairing..'
+		x = -1
+		while x < 0:
+			x, y = image.findImgR(panel.Full, 'img/ok.bmp')
+			if x < 0:
+				return False
+			mouse.moveTo(x, y)
+			mouse.leftClick()
+		x, y = image.findImgR(panel.Full, 'img/repair_facilities.bmp')
+		mouse.moveTo(x, y)
+	else:
+		print 'nothing to repair'
+	x, y = image.findImgR(panel.Full, 'img/x.bmp')
+	mouse.moveTo(x, y)
+	mouse.leftClick()
+
+
+	print '<-- repair\n'
 	return True
 
 def test():
 	mouse.moveTo(1000, 300)
 	mouse.leftClick()
-	# findTarget('img/blood_raider_personnel.bmp')
-	# lockTarget('img/blood_raider_personnel.bmp')
-	print findEnemy()
+	repair()
 	pass
 
 if __name__ == '__main__':

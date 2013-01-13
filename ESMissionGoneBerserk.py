@@ -8,37 +8,37 @@ import ESPilot as pilot
 def run():
 	print '--> mission Gone Berserk'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# pilot.autopilot()
+	pilot.autopilot()
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# if not space.enableAllLowSlot():
-	#	return False
+	if not space.enableAllLowSlot():
+		return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.launchDrones():
+		return False
 
-	# if not space.openMissionDetail():
-	# 	return False
+	if not space.openMissionDetail():
+		return False
 
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	if not space.dronesReturn():
+		return False
 
-	# if not space.setMissionWaypoint():
-	# 	return False
-
-	# pilot.autopilot()
-
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Gone Berserk\n'
 	return True

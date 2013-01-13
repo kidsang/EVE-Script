@@ -13,6 +13,8 @@ def run():
 	if not station.undock():
 		return False
 
+	pilot.autopilot()
+
 	if not space.warpToMissionLocation():
 		return False
 
@@ -45,7 +47,10 @@ def run():
 	if not space.missionObjectiveComplete():
 		return False
 
-	space.backToAgentStation()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		space.backToAgentStation()
 
 	print '<-- mission Stop The Thief\n'
 	return True

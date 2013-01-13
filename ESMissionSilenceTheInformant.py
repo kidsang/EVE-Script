@@ -28,7 +28,7 @@ def run():
 	# if not space.activateAccelerationGate():
 	# 	return False
 
-	# # pocket 1
+	# # # pocket 1
 	# mouse.move(-200, 0)
 	# if not space.findTarget("img/acceleration_gate.bmp"):
 	# 	return False
@@ -54,13 +54,13 @@ def run():
 	# if not space.dronesReturn():
 	# 	return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# # pocket 2
+	# pocket 2
 		
-	# if not space.openAfterBurn():
-	# 	return False
+	if not space.openAfterBurn():
+		return False
 
 	x = -1
 	while x < 0:

@@ -48,10 +48,11 @@ def run():
 	if not space.dronesReturn():
 		return False
 
-	if not space.setMissionWaypoint():
-		return False
-
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission The Sansha Spies\n'
 	return True

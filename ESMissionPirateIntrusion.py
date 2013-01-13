@@ -22,10 +22,7 @@ def run():
 	# if not space.openMissionDetail():
 	# 	return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
-
-	# # pocket 1
+	# pocket 1
 	# mouse.move(-200, 0)
 	# if not space.findTarget("img/acceleration_gate.bmp"):
 	# 	return False
@@ -56,34 +53,31 @@ def run():
 	# if not space.activateAccelerationGate():
 	# 	return False
 
-	# # pocket 2
+	# pocket 2
 
-	# if not space.launchDrones():
-	# 	return False
+	if not space.launchDrones():
+		return False
 		
-	# if not space.openAfterBurn():
-	# 	return False
+	if not space.openAfterBurn():
+		return False
 
-	# if not space.approach():
-	# 	return False
+	while space.findEnemy():
+		mouse.leftClick()
+		space.approach()
+		key.keyPressEx(sc.Lock)
+		time.sleep(8)
+		space.fireOne()
+		time.sleep(15)
+		mouse.move(-200, 0)
 
-	# while space.findEnemy():
-	# 	mouse.leftClick()
-	# 	space.approach()
-	# 	key.keyPressEx(sc.Lock)
-	# 	time.sleep(8)
-	# 	space.fireOne()
-	# 	time.sleep(15)
-	# 	mouse.move(-200, 0)
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.dronesReturn():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
-
-	# if not space.backToAgentStation():
-	# 	return False
+	if not space.backToAgentStation():
+		return False
 
 	print '<-- mission Pirate Intrusion\n'
 	return True

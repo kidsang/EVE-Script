@@ -43,25 +43,8 @@ def run():
 	if not space.dronesReturn():
 		return False
 
-	if not space.findTarget("img/acceleration_gate.bmp"):
+	if not space.activateAccelerationGate():
 		return False
-	mouse.leftClick()
-	key.keyPressEx(sc.Activate)
-
-	space.enterStartMap()
-	mouse.moveToP(panel.middle(panel.Message))
-	mouse.leftDown()
-	mouse.move(500, 200)
-	mouse.leftUp()
-
-	print 'wait until activate gate'
-	while not space.findWarpDriveActive():
-		time.sleep(0.1)
-	print 'wait until reach location'
-	while space.findWarpDriveActive():
-		time.sleep(0.1)
-
-	space.exitStartMap()
 
 	# pocket 1
 	mouse.move(-200, 0)

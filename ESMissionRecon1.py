@@ -11,37 +11,41 @@ import time
 def run():
 	# print '--> mission Recon 1'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# if not space.enableAllLowSlot():
-	# 	return False
+	if not space.enableAllLowSlot():
+		return False
 
-	# if not space.openMissionDetail():
-	# 	return False
+	if not space.openMissionDetail():
+		return False
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# # pocket 1
-	# # can activate acceleration gate without cleaning
-	# mouse.move(-200, 0)
+	# pocket 1
+	# can activate acceleration gate without cleaning
+	mouse.move(-200, 0)
 
-	# if not space.activateAccelerationGate():
-	# 	return False
+	if not space.openAfterBurn():
+		return False
 
-	# # # pocket 2
-	# if not space.missionObjectiveComplete():
-	# 	return False
+	if not space.activateAccelerationGate():
+		return False
 
-	# if not space.dronesReturn():
-	# 	return False
+	# # pocket 2
+	while not space.findOk():
+		time.sleep(1)
+	mouse.leftClick()
+	
+	if not space.missionObjectiveComplete():
+		return False
 
-	# if not space.backToAgentStation():
-	# 	return False
+	if not space.backToAgentStation():
+		return False
 
 	print '<-- mission Recon 1\n'
 	return True

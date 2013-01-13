@@ -5,6 +5,7 @@ import ESStation as station
 import ESSpace as space
 import ESPilot as pilot
 import ESShortcut as sc
+import ESPanel as panel
 import time
 
 def run():
@@ -49,7 +50,7 @@ def run():
 		return False
 
 	# mission item is in wreck
-	while space.findEnemy():
+	while not space.findV() and space.findEnemy():
 		mouse.leftClick()
 		space.approach()
 		key.keyPressEx(sc.Lock)
@@ -63,18 +64,14 @@ def run():
 	if not space.dronesReturn():
 		return False
 
-	# pick wercks
-	while space.pickWreck():
-		pass
-	mouse.leftUp()
-
 	if not space.missionObjectiveComplete():
 		return False
 
-	if not space.setMissionWaypoint():
-		return False
-
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Unauthorized Military Presence\n'
 	return True

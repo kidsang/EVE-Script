@@ -37,9 +37,9 @@ def run():
 		return False
 
 	# # pocket 2
-	while not space.findOk():
-		time.sleep(1)
-	mouse.leftClick()
+	time.sleep(2)
+	if space.findOK():
+		mouse.leftClick()
 	
 	if not space.missionObjectiveComplete():
 		return False

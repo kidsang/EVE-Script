@@ -40,6 +40,7 @@ import ESMissionStopTheThief as stop_the_thief
 import ESMissionCargoDelivery as cargo_delivery
 import ESMissionSavingAMansCareer as saving_a_mans_career
 import ESMissionVigilance as vigilance
+import ESMissionSmugglerInterception as smuggler_interception
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -79,7 +80,7 @@ bots = {'Gone Berserk':gone_berserk,
         'Cargo Deliverg':cargo_delivery, #v
         'Save A Mane; Career':saving_a_mans_career,
         'Vigilante':vigilance,
-        'Smuggler lnterteption':
+        'Smuggler lnterteption':smuggler_interception,
         }
 
 agent = 'img/agent.bmp'
@@ -92,31 +93,31 @@ def run():
     print 'mission bot begin. \n'
     while True:
 
-        if not station.startConversation(agent):
-            print 'Error: Could not find target agent.'
-            return False
+        # if not station.startConversation(agent):
+        #     print 'Error: Could not find target agent.'
+        #     return False
 
-        mission = image.extractTextR(panel.MissionName).strip()
-        if mission not in bots:
-            print 'Error: Cant find bot for mission \'' + mission + '\'.'
-            return False
-        bot = bots[mission]
+        # mission = image.extractTextR(panel.MissionName).strip()
+        # if mission not in bots:
+        #     print 'Error: Cant find bot for mission \'' + mission + '\'.'
+        #     return False
+        # bot = bots[mission]
 
-        print 'Mission - ' + mission
-        if not station.acceptMission():
-            print 'Error: Accept mission failed.'
-            return False
+        # print 'Mission - ' + mission
+        # if not station.acceptMission():
+        #     print 'Error: Accept mission failed.'
+        #     return False
 
-        if not space.setMissionWaypoint():
-            print 'Error: Cant set mission waypoint.'
-            return False
+        # if not space.setMissionWaypoint():
+        #     print 'Error: Cant set mission waypoint.'
+        #     return False
 
-        # # TODO:test
-        # bot = pirate_intrusion
+        # TODO:test
+        bot = vigilance
 
-        # # TODO:test
-        # mouse.moveToP(panel.middle(panel.Full))
-        # mouse.leftClick()
+        # TODO:test
+        mouse.moveToP(panel.middle(panel.Full))
+        mouse.leftClick()
 
         if not bot.run():
             print 'Error: Mission abort.'
@@ -138,7 +139,7 @@ def run():
             return False
 
         # TODO
-        # break
+        break
     return False
 
 if __name__ == '__main__':

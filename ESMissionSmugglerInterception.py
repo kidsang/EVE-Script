@@ -5,11 +5,10 @@ import ESStation as station
 import ESSpace as space
 import ESPilot as pilot
 import ESShortcut as sc
-import ESPanel as panel
 import time
 
 def run():
-	print '--> mission Vigilance'
+	print '--> mission Smuggler Interception'
 
 	if not station.undock():
 		return False
@@ -22,20 +21,24 @@ def run():
 	if not space.enableAllLowSlot():
 		return False
 
-	if not space.openAfterBurn():
+	if not space.activateAccelerationGate():
 		return False
 
-	while not space.lockTarget('img/suspicious.bmp'):
-		time.sleep(5)
+	if not space.openAfterBurn():
+		return False
 
 	if not space.launchDrones():
 		return False
 
-	if not space.dronesEngage():
-		return False
-
-	if not space.pickMissionItem():
-		return False
+	while space.findEnemy():
+		mouse.leftClick()
+		key.keyPressEx(sc.Lock)
+		space.approach()
+		time.sleep(8)
+		space.fireOne()
+		time.sleep(15)
+		mouse.move(-200, 0)
+		space.pickWreck()
 
 	if not space.dronesReturn():
 		return False
@@ -46,5 +49,5 @@ def run():
 		space.exitStartMap()
 		space.backToAgentStation()
 
-	print '<-- mission Vigilance\n'
+	print '<-- mission Smuggler Interception\n'
 	return True

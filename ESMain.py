@@ -43,6 +43,7 @@ import ESMissionVigilance as vigilance
 import ESMissionSmugglerInterception as smuggler_interception
 import ESMissionRogueDroneHarassment as rouge_drone_harassment
 import ESMissionMurdererBroughtToJustice as murderer_brought_to_justice
+import ESMissionTheDroneInfestation as the_drone_infestation
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -85,6 +86,7 @@ bots = {'Gone Berserk':gone_berserk,
         'Smuggler lnterteption':smuggler_interception,
         'Rogue Drone Harassment':rouge_drone_harassment,
         'Murderer Brought To Justice':murderer_brought_to_justice,
+        'The Drone lnfestatinn':the_drone_infestation,
         }
 
 agent = 'img/agent.bmp'
@@ -117,7 +119,7 @@ def run():
             return False
 
         # # TODO:test
-        # bot = vigilance
+        # bot = the_drone_infestation
 
         # # TODO:test
         # mouse.moveToP(panel.middle(panel.Full))
@@ -143,7 +145,7 @@ def run():
             return False
 
         # TODO
-        # break
+        break
     return False
 
 if __name__ == '__main__':

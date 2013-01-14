@@ -42,6 +42,7 @@ import ESMissionSavingAMansCareer as saving_a_mans_career
 import ESMissionVigilance as vigilance
 import ESMissionSmugglerInterception as smuggler_interception
 import ESMissionRogueDroneHarassment as rouge_drone_harassment
+import ESMissionMurdererBroughtToJustice as murderer_brought_to_justice
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -83,6 +84,7 @@ bots = {'Gone Berserk':gone_berserk,
         'Vigilante':vigilance,
         'Smuggler lnterteption':smuggler_interception,
         'Rogue Drone Harassment':rouge_drone_harassment,
+        'Murderer Brought To Justice':murderer_brought_to_justice,
         }
 
 agent = 'img/agent.bmp'

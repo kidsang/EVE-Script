@@ -78,7 +78,7 @@ bots = {'Gone Berserk':gone_berserk,
         # 'Silence The Informant':silence_the_informant,
         'Eliminate the Pirate Campers':eliminate_the_pirate_campers, #v
         # 'Trimming the Fat':trimming_the_fat,
-        # 'The Blnnkade':the_blockade,#v
+        'The Blnnkade':the_blockade,#v
         'Stop The Thief':stop_the_thief,#v
         'Cargo Deliverg':cargo_delivery, #v
         'Save A Mane; Career':saving_a_mans_career,

@@ -33,7 +33,7 @@ def run():
 	if not space.lockTarget('img/silo.bmp'):
 		return False
 
-	space.approachFor(60)
+	space.approachFor(10)
 
 	if not space.launchDrones():
 		return False
@@ -53,6 +53,7 @@ def run():
 	if space.setMissionWaypoint():
 		pilot.autopilot()
 	else:
+		mouse.leftClick()
 		space.exitStartMap()
 		space.backToAgentStation()
 

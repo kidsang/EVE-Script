@@ -62,7 +62,7 @@ bots = {'Gone Berserk':gone_berserk,
         'Labors of War (1 of 3)':labors_of_war_1,#v
         'Labors of War (2 of 3)':labors_of_war_2,#v
         'Labors of War (3 of 3)':labors_of_war_3,
-        # 'Pirate Intrusion':pirate_intrusion,
+        'Pirate Intrusion':pirate_intrusion,
         'The Hidden Stash':the_hidden_stash, #v
         'Mission of Hem;':mission_of_mercy,
         'Renon (1 of 3)':recon_1,
@@ -89,6 +89,8 @@ bots = {'Gone Berserk':gone_berserk,
         'The Drone lnfestatinn':the_drone_infestation,
         }
 
+skips = ['Illegal Mtivitg (1 of 3)']
+
 agent = 'img/agent.bmp'
 
 def run():
@@ -105,8 +107,14 @@ def run():
 
         mission = image.extractTextR(panel.MissionName).strip()
         if mission not in bots:
-            print 'Error: Cant find bot for mission \'' + mission + '\'.'
-            return False
+            if mission in skips:
+                print 'Skip mission \'' + mission + '\''
+                station.declineMission()
+                continue
+            else:
+                print 'Error: Cant find bot for mission \'' + mission + '\'.'
+                return False
+
         bot = bots[mission]
 
         print 'Mission - ' + mission
@@ -119,7 +127,7 @@ def run():
             return False
 
         # # TODO:test
-        # bot = the_drone_infestation
+        # bot = mission_of_mercy
 
         # # TODO:test
         # mouse.moveToP(panel.middle(panel.Full))

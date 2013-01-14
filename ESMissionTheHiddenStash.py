@@ -59,6 +59,7 @@ def run():
 	if space.setMissionWaypoint():
 		pilot.autopilot()
 	else:
+		mouse.leftClick()
 		space.exitStartMap()
 		space.backToAgentStation()
 

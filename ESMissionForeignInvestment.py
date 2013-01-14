@@ -69,7 +69,8 @@ def run():
 	if space.setMissionWaypoint():
 		pilot.autopilot()
 	else:
-		exitStartMap()
+		mouse.leftClick()
+		space.exitStartMap()
 		space.backToAgentStation()
 
 	print '<-- mission Foreign Investment\n'

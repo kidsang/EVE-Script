@@ -44,7 +44,7 @@ def findAccept():
     return False
 
 def findX():
-    x, y = image.findImgR(panel.MissionRight,
+    x, y = image.findImgR(panel.Mission,
         'img/x.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
@@ -60,7 +60,7 @@ def findCompleteMission():
     return False
 
 def findRequestMission():
-    x, y = image.findImgR(panel.MissionRight,
+    x, y = image.findImgR(panel.Mission,
         'img/request_mission.bmp')
     if x != -1 and y != -1:
         mouse.moveTo(x, y)
@@ -121,6 +121,28 @@ def acceptMission():
     mouse.leftClick()
 
     print '<-- accept mission\n'
+    return True
+
+def declineMission():
+    print '--> decline mission'
+
+    x, y = image.findImgR(panel.MissionRight, 'img/decline.bmp')
+    mouse.moveTo(x, y)
+    mouse.leftClick()
+
+    print 'wait until decline'
+
+    while not findRequestMission():
+        time.sleep(0.5)
+    mouse.leftClick()
+
+    while not findX():
+        time.sleep(0.2)
+    mouse.leftClick()
+
+    time.sleep(1)
+
+    print '<-- decline mission\n'
     return True
 
 def completeMission():

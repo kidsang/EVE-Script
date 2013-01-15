@@ -18,6 +18,11 @@ def run():
 	if not space.warpToMissionLocation():
 		return False
 
+	print 'wait for message'
+	time.sleep(10)
+	if space.findClose():
+		mouse.leftClick()
+
 	if not space.enableAllLowSlot():
 		return False
 

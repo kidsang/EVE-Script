@@ -18,6 +18,11 @@ def run():
 	if not space.warpToMissionLocation():
 		return False
 
+	print 'wait for message show up'
+	time.sleep(8)
+	if space.findClose():
+		mouse.leftClick()
+
 	if not space.enableAllLowSlot():
 		return False
 
@@ -27,23 +32,18 @@ def run():
 	if not space.openMissionDetail():
 		return False
 
-	x = -1
-	while x < 0:
-		x, y = image.findImgR(panel.Full, 'img/close.bmp')
-		time.sleep(0.1)
-	mouse.moveTo(x, y)
-	mouse.leftClick()
-
 	if not space.missionObjectiveComplete():
 		return False
 
 	if not space.dronesReturn():
 		return False
 
-	if not space.setMissionWaypoint():
-		return False
-
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		mouse.leftClick()
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Trimming the Fat\n'
 	return True

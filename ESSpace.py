@@ -485,20 +485,25 @@ def activateAccelerationGate():
 	mouse.leftClick()
 	key.keyPressEx(sc.Activate)
 
-	time.sleep(1)
-	if findClose() or findOK():
-		mouse.leftClick()
-		mouse.move(0, -200)
 	print 'wait to activate gate'
 	while not findWarpDriveActive():
-		time.sleep(0.1)
+		if findClose() or findOK():
+			mouse.leftClick()
+			mouse.move(0, -200)
+		time.sleep(1)
+
 	time.sleep(4)
 	if findClose() or findOK():
 		mouse.leftClick()
 		mouse.move(0, -200)
+
 	print 'wait until reach location'
 	while findWarpDriveActive():
-		time.sleep(0.1)
+		time.sleep(0.5)
+
+	if findClose() or findOK():
+		mouse.leftClick()
+		mouse.move(0, -200)
 
 	exitStartMap()
 

@@ -76,9 +76,9 @@ bots = {'Gone Berserk':gone_berserk,
         'Tenhnalaginal Secrets (3 of 3)':technological_secrets_3,#v
         'Seek and Destmg':seek_and_destory,#v
         'Foreign Investment':foreign_investment,#v
-        # 'Silence The Informant':silence_the_informant,
+        'Silence The Informant':silence_the_informant,
         'Eliminate the Pirate Campers':eliminate_the_pirate_campers, #v
-        # 'Trimming the Fat':trimming_the_fat,
+        'Trimming the Fat':trimming_the_fat,
         'The Blnnkade':the_blockade,#v
         'Stop The Thief':stop_the_thief,#v
         'Cargo Deliverg':cargo_delivery, #v
@@ -109,13 +109,15 @@ def run():
 
         mission = image.extractTextR(panel.MissionName).strip()
         if mission not in bots:
-            if mission in skips:
-                print 'Skip mission \'' + mission + '\''
-                station.declineMission()
-                continue
-            else:
-                print 'Error: Cant find bot for mission \'' + mission + '\'.'
-                return False
+            print 'Skip mission \'' + mission + '\''
+            station.declineMission()
+            # if mission in skips:
+            #     print 'Skip mission \'' + mission + '\''
+            #     station.declineMission()
+            #     continue
+            # else:
+            #     print 'Error: Cant find bot for mission \'' + mission + '\'.'
+            #     return False
 
         bot = bots[mission]
 
@@ -129,7 +131,7 @@ def run():
             return False
 
         # # TODO:test
-        # bot = customs_interdictian_2
+        # bot = cargo_delivery
 
         # # TODO:test
         # mouse.moveToP(panel.middle(panel.Full))

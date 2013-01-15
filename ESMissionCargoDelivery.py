@@ -11,26 +11,28 @@ import time
 def run():
 	print '--> mission Cargo delivery'
 
-	# if not station.undock():
-	# 	return False
+	if not station.undock():
+		return False
 
-	# pilot.autopilot()
+	pilot.autopilot()
 
-	# if not space.warpToMissionLocation():
-	# 	return False
+	if not space.warpToMissionLocation():
+		return False
 
-	# if not space.enableAllLowSlot():
-	# 	return False
+	if not space.enableAllLowSlot():
+		return False
 
 	if not space.openAfterBurn():
 		return False
 
 	space.pickMissionItem()
 
-	if not space.setMissionWaypoint():
-		return False
-
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		mouse.leftClick()
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Cargo delivery\n'
 	return True

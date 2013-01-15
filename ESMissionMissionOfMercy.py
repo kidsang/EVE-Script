@@ -33,16 +33,25 @@ def run():
 	# wait for enemy to warp in
 	time.sleep(60)
 
+	# establish hate
+	if space.findEnemy():
+		mouse.leftClick()
+		key.keyPressEx(sc.Lock)
+		space.approach()
+		time.sleep(10)
+		space.fireOne()
+		time.sleep(6)
+
 	if not space.launchDrones():
 		return False
 
-	while space.findEnemy():
+	while not space.findV() and space.findEnemy():
 		mouse.leftClick()
 		key.keyPressEx(sc.Keep)
 		key.keyPressEx(sc.Lock)
-		time.sleep(8)
+		time.sleep(10)
 		space.fireOne()
-		time.sleep(15)
+		time.sleep(8)
 		mouse.move(-200, 0)
 		mouse.leftClick()
 
@@ -55,6 +64,7 @@ def run():
 	if space.setMissionWaypoint():
 		pilot.autopilot()
 	else:
+		mouse.leftClick()
 		space.exitStartMap()
 		space.backToAgentStation()
 

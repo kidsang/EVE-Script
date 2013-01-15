@@ -50,21 +50,22 @@ def run():
 		return False
 
 	# mission item is in wreck
-	while not space.findV() and space.findEnemy():
-		mouse.leftClick()
-		space.approach()
-		key.keyPressEx(sc.Lock)
-		time.sleep(8)
-		space.fireOne()
-		time.sleep(15)
-		mouse.move(-200, 0)
+	while not space.findV():
+		if space.findEnemy():
+			mouse.leftClick()
+			space.approach()
+			key.keyPressEx(sc.Lock)
+			time.sleep(8)
+			space.fireOne()
+			time.sleep(15)
+			mouse.move(-200, 0)
 		# collect
 		space.pickWreck()
 
-	if not space.dronesReturn():
+	if not space.missionObjectiveComplete():
 		return False
 
-	if not space.missionObjectiveComplete():
+	if not space.dronesReturn():
 		return False
 
 	if space.setMissionWaypoint():

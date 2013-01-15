@@ -44,10 +44,12 @@ def run():
 	if not space.dronesReturn():
 		return False
 
-	if not space.setMissionWaypoint():
-		return False
-
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		mouse.leftClick()
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Saving A Mans Career\n'
 	return True

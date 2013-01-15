@@ -91,7 +91,7 @@ bots = {'Gone Berserk':gone_berserk,
         "The Seven'ss Brothel":the_sevens_brothel,
         }
 
-skips = ['Illegal Mtivitg (1 of 3)']
+skips = ['Illegal Mtivitg (1 of 3)', 'Intercept The Sabateurs']
 
 agent = 'img/agent.bmp'
 
@@ -103,37 +103,37 @@ def run():
     print 'mission bot begin. \n'
     while True:
 
-        # if not station.startConversation(agent):
-        #     print 'Error: Could not find target agent.'
-        #     return False
+        if not station.startConversation(agent):
+            print 'Error: Could not find target agent.'
+            return False
 
-        # mission = image.extractTextR(panel.MissionName).strip()
-        # if mission not in bots:
-        #     if mission in skips:
-        #         print 'Skip mission \'' + mission + '\''
-        #         station.declineMission()
-        #         continue
-        #     else:
-        #         print 'Error: Cant find bot for mission \'' + mission + '\'.'
-        #         return False
+        mission = image.extractTextR(panel.MissionName).strip()
+        if mission not in bots:
+            if mission in skips:
+                print 'Skip mission \'' + mission + '\''
+                station.declineMission()
+                continue
+            else:
+                print 'Error: Cant find bot for mission \'' + mission + '\'.'
+                return False
 
-        # bot = bots[mission]
+        bot = bots[mission]
 
-        # print 'Mission - ' + mission
-        # if not station.acceptMission():
-        #     print 'Error: Accept mission failed.'
-        #     return False
+        print 'Mission - ' + mission
+        if not station.acceptMission():
+            print 'Error: Accept mission failed.'
+            return False
 
-        # if not space.setMissionWaypoint():
-        #     print 'Error: Cant set mission waypoint.'
-        #     return False
+        if not space.setMissionWaypoint():
+            print 'Error: Cant set mission waypoint.'
+            return False
 
-        # TODO:test
-        bot = customs_interdictian_1
+        # # TODO:test
+        # bot = customs_interdictian_2
 
-        # TODO:test
-        mouse.moveToP(panel.middle(panel.Full))
-        mouse.leftClick()
+        # # TODO:test
+        # mouse.moveToP(panel.middle(panel.Full))
+        # mouse.leftClick()
 
         if not bot.run():
             print 'Error: Mission abort.'
@@ -155,7 +155,7 @@ def run():
             return False
 
         # TODO
-        break
+        # break
     return False
 
 if __name__ == '__main__':

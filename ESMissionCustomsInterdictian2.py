@@ -11,6 +11,8 @@ def run():
 	if not station.undock():
 		return False
 
+	pilot.autopilot()
+
 	if not space.warpToMissionLocation():
 		return False
 
@@ -47,8 +49,12 @@ def run():
 	if not space.pickMissionItem():
 		return False
 
-	if not space.backToAgentStation():
-		return False
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		mouse.leftClick()
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Customs lnterdictian (2 of 2)\n'
 	return True

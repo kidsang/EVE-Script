@@ -4,6 +4,7 @@ import ESMouse as mouse
 import ESKeyboard as key
 import ESShortcut as sc
 import time
+import random
 
 
 def findRepairShop():
@@ -358,7 +359,9 @@ def lockTarget(imgpath):
 	print 'finding target...'
 	trycount = 0
 	while not findTarget(imgpath):
-		mouse.moveToP(panel.middle(panel.Overview))
+		x, y = panel.middle(panel.Overview)
+		y += random.random() * 40
+		mouse.moveTo(x, y)
 		mouse.leftClick()
 		if trycount < 8:
 			mouse.wheel(-12)
@@ -409,7 +412,9 @@ def pickMissionItem():
 	print 'wait until cargo finded'
 	trycount = 0
 	while not findCan():
-		mouse.moveToP(panel.middle(panel.Overview))
+		x, y = panel.middle(panel.Overview)
+		y += random.random() * 40
+		mouse.moveTo(x, y)
 		mouse.leftClick()
 		if trycount < 8:
 			mouse.wheel(-12)

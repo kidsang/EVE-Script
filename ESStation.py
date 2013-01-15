@@ -130,6 +130,12 @@ def declineMission():
     mouse.moveTo(x, y)
     mouse.leftClick()
 
+    time.sleep(5)
+    x, y = image.findImgR(panel.Full, 'img/yes.bmp')
+    if x > 0:
+        mouse.moveTo(x, y)
+        mouse.leftClick()
+
     print 'wait until decline'
 
     while not findRequestMission():

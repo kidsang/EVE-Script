@@ -29,6 +29,8 @@ def run():
 	if not space.openMissionDetail():
 		return False
 
+	time.sleep(10)
+
 	if not space.lockBig():
 		return False
 

@@ -4,17 +4,57 @@ import win32con as con
 import time
 
 cd = 0.5
+winWidth = GetSystemMetrics(0)
+winHeight = GetSystemMetrics(1)
+densx = 65535.0 / winWidth
+densy = 65535.0 / winHeight
 
 def moveTo(x, y):
-    winWidth = GetSystemMetrics(0)
-    winHeight = GetSystemMetrics(1)
-    absX = int(x * 65535.0 / winWidth)
-    absY = int(y * 65535.0 / winHeight)
+    absX = int(x * densx)
+    absY = int(y * densy)
     api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_MOVE, absX, absY)
     time.sleep(cd)
 
 def moveToP(point):
     moveTo(point[0], point[1])
+
+def leftDownAt(x, y):
+    absX = int(x * densx)
+    absY = int(y * densy)
+    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
+    time.sleep(cd)
+
+def leftDownAtP(point):
+    leftDownAt(point[0], point[1])
+
+def leftClickAt(x, y):
+    absX = int(x * densx)
+    absY = int(y * densy)
+    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_LEFTUP, 0, 0)
+    time.sleep(cd)
+
+def leftClickAtP(point):
+    leftClickAt(point[0], point[1])
+    
+def rightDownAt(x, y):
+    absX = int(x * densx)
+    absY = int(y * densy)
+    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
+    time.sleep(cd)
+
+def rightDownAtP(point):
+    rightDownAt(point[0], point[1])
+
+def rightClickAt(x, y):
+    absX = int(x * densx)
+    absY = int(y * densy)
+    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_RIGHTUP, 0, 0)
+    time.sleep(cd)
+
+def rightClickAtP(point):
+    rightClickAt(point[0], point[1])
 
 def move(dx, dy):
     api.mouse_event(con.MOUSEEVENTF_MOVE, dx, dy)

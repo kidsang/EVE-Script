@@ -26,7 +26,7 @@ def run():
 		return False
 
 	while not space.findV():
-		if space.lockTarget('img/enslaver') or space.lockTarget('img/plague'):
+		if space.lockTarget('img/enslaver.bmp') or space.lockTarget('img/plague.bmp'):
 			space.dronesReturn()
 			time.sleep(8)
 			space.launchDrones()

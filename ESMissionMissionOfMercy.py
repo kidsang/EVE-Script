@@ -37,10 +37,10 @@ def run():
 	if space.findEnemy():
 		mouse.leftClick()
 		key.keyPressEx(sc.Lock)
-		space.approach()
+		key.keyPressEx(sc.Keep)
 		time.sleep(10)
 		space.fireOne()
-		time.sleep(6)
+		time.sleep(5)
 
 	if not space.launchDrones():
 		return False

@@ -339,10 +339,12 @@ def openAfterBurn():
 def lockBig():
 	print '--> lock big'
 
+	key.keyDownEx(sc.Lock)
 	if not findBig():
+		key.keyUpEx(sc.Lock)
 		return False
 	mouse.leftClick()
-	key.keyPressEx(sc.Lock)
+	key.keyUpEx(sc.Lock)
 	mouse.move(-100, 0)
 	time.sleep(3.5)
 	print '<-- lock big\n'
@@ -358,9 +360,11 @@ def lockTarget(imgpath):
 
 	print 'finding target...'
 	trycount = 0
+	key.keyDownEx(sc.Lock)
 	while not findTarget(imgpath):
 		x, y = panel.middle(panel.Overview)
 		y += random.random() * 40
+		key.keyUpEx(sc.Lock)
 		mouse.moveTo(x, y)
 		mouse.leftClick()
 		if trycount < 8:
@@ -368,11 +372,13 @@ def lockTarget(imgpath):
 		elif trycount < 16:
 			mouse.wheel(12)
 		trycount += 1
+		key.keyDownEx(sc.Lock)
 		if trycount > 16:
 			print 'can not find target'
+			key.keyUpEx(sc.Lock)
 			return False
 	mouse.leftClick()
-	key.keyPressEx(sc.Lock)
+	key.keyUpEx(sc.Lock)
 	time.sleep(3)
 
 	print '<-- lock ' + target + '\n'
@@ -412,8 +418,9 @@ def pickMissionItem():
 	print 'wait until cargo finded'
 	trycount = 0
 	while not findCan():
+		print 'try ' + str(trycount + 1)
 		x, y = panel.middle(panel.Overview)
-		y += random.random() * 40
+		y += random.random() * 200 - 100
 		mouse.moveTo(x, y)
 		mouse.leftClick()
 		if trycount < 8:
@@ -427,6 +434,7 @@ def pickMissionItem():
 	mouse.leftClick()
 	key.keyPressEx(sc.Approach)
 
+	print 'finding open cargo'
 	if not findOpenCargo():
 		return False
 	mouse.leftClick()
@@ -526,7 +534,7 @@ def launchDrones():
 	mouse.leftClick()
 
 	print 'wait until lunch drones'
-	while not findIdle():
+	while not findIdle() and not findFighting() and not findReturning():
 		time.sleep(0.1)
 
 	print '<-- lunch drones\n'
@@ -648,7 +656,7 @@ def repair():
 def test():
 	mouse.moveTo(1000, 300)
 	mouse.leftClick()
-	repair()
+	pickMissionItem()
 	pass
 
 if __name__ == '__main__':

@@ -45,6 +45,7 @@ import ESMissionRogueDroneHarassment as rouge_drone_harassment
 import ESMissionMurdererBroughtToJustice as murderer_brought_to_justice
 import ESMissionTheDroneInfestation as the_drone_infestation
 import ESMissionTheSevensBrothel as the_sevens_brothel
+import ESMissionTheScore as the_score
 
 def inStation():
     x, y = image.findImgR(panel.Menu,
@@ -89,6 +90,7 @@ bots = {'Gone Berserk':gone_berserk,
         'Murderer Brought To Justice':murderer_brought_to_justice,
         'The Drone lnfestatinn':the_drone_infestation,
         "The Seven'ss Brothel":the_sevens_brothel,
+        "The Sanre":the_score,
         }
 
 skips = ['Illegal Mtivitg (1 of 3)', 'Intercept The Sabateurs']

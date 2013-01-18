@@ -21,7 +21,7 @@ def moveToP(point):
 def leftDownAt(x, y):
     absX = int(x * densx)
     absY = int(y * densy)
-    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_MOVE | con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
     time.sleep(cd)
 
 def leftDownAtP(point):
@@ -30,7 +30,7 @@ def leftDownAtP(point):
 def leftClickAt(x, y):
     absX = int(x * densx)
     absY = int(y * densy)
-    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_MOVE | con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_LEFTDOWN, absX, absY)
     api.mouse_event(con.MOUSEEVENTF_LEFTUP, 0, 0)
     time.sleep(cd)
 
@@ -40,7 +40,7 @@ def leftClickAtP(point):
 def rightDownAt(x, y):
     absX = int(x * densx)
     absY = int(y * densy)
-    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_MOVE | con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
     time.sleep(cd)
 
 def rightDownAtP(point):
@@ -49,7 +49,7 @@ def rightDownAtP(point):
 def rightClickAt(x, y):
     absX = int(x * densx)
     absY = int(y * densy)
-    api.mouse_event(con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
+    api.mouse_event(con.MOUSEEVENTF_MOVE | con.MOUSEEVENTF_ABSOLUTE | con.MOUSEEVENTF_RIGHTDOWN, absX, absY)
     api.mouse_event(con.MOUSEEVENTF_RIGHTUP, 0, 0)
     time.sleep(cd)
 
@@ -118,6 +118,7 @@ def wheel(dz):
     time.sleep(cd)
 
 def test():
+    leftClickAt(100, 100)
     pass
 
 if __name__ == '__main__':

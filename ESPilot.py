@@ -4,12 +4,12 @@ import ESMouse as mouse
 import ESImage as image
 import ESPanel as panel
 import ESShortcut as sc
+import random
 
 def findTargetStarGate():
     x, y = image.findImgR(panel.Overview,
        'img/target_star_gate.bmp', 0.2)
     if x != -1 and y != -1:
-        mouse.moveTo(x, y)
         return True
     return False
 
@@ -17,7 +17,6 @@ def findTargetStation():
     x, y = image.findImgR(panel.Overview,
        'img/target_station.bmp', 0.2)
     if x != -1 and y != -1:
-        mouse.moveTo(x, y)
         return True
     return False
 
@@ -65,8 +64,9 @@ def autopilot():
                 finded = 'stargate'
                 break
             else:
-                mouse.moveToP(panel.middle(panel.Overview))
-                mouse.leftClick()
+                x, y = panel.middle(panel.Overview)
+                y += random.random() * 200 - 100
+                mouse.leftClickAt(x, y)
                 mouse.wheel(-12)
 
         if finded == '':
@@ -76,6 +76,9 @@ def autopilot():
 
         if finded == 'station':
             print 'target station finded, dock'
+            x, y = image.findImgR(panel.Overview,
+             'img/target_station.bmp', 0.2)
+            mouse.leftClickAt(x, y)
             dock()
             print 'wait until entering station'
             while not findEnteringStation():
@@ -87,6 +90,9 @@ def autopilot():
 
         if finded == 'stargate':
             print 'target stargate finded, jump'
+            x, y = image.findImgR(panel.Overview,
+             'img/target_star_gate.bmp', 0.2)
+            mouse.leftClickAt(x, y)
             jump()
             print 'wait until entering space'
             while not findEnteringSpace():
@@ -99,15 +105,5 @@ def autopilot():
 
 
 
-
-
-# x, y = image.findImg(300, 300, 1000, 1000, 'img/test3.bmp')
-# if x != -1 and y != -1:
-#     mouse.moveTo(x, y)
-# print x, y
-
-def test():
-    autopilot()
-
 if __name__ == '__main__':
-    test()
+    autopilot()

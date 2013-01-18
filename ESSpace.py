@@ -360,11 +360,9 @@ def lockTarget(imgpath):
 
 	print 'finding target...'
 	trycount = 0
-	key.keyDownEx(sc.Lock)
 	while not findTarget(imgpath):
 		x, y = panel.middle(panel.Overview)
 		y += random.random() * 40
-		key.keyUpEx(sc.Lock)
 		mouse.moveTo(x, y)
 		mouse.leftClick()
 		if trycount < 8:
@@ -372,13 +370,12 @@ def lockTarget(imgpath):
 		elif trycount < 16:
 			mouse.wheel(12)
 		trycount += 1
-		key.keyDownEx(sc.Lock)
 		if trycount > 16:
 			print 'can not find target'
 			key.keyUpEx(sc.Lock)
 			return False
 	mouse.leftClick()
-	key.keyUpEx(sc.Lock)
+	key.keyPressEx(sc.Lock)
 	time.sleep(3)
 
 	print '<-- lock ' + target + '\n'
@@ -431,13 +428,7 @@ def pickMissionItem():
 		if trycount >= 16:
 			trycount = 0
 
-	mouse.leftClick()
-	key.keyPressEx(sc.Approach)
-
-	print 'finding open cargo'
-	if not findOpenCargo():
-		return False
-	mouse.leftClick()
+	mouse.doubleClick()
 
 	print 'wait until cargo open'
 	while not findLootAll():
@@ -457,12 +448,7 @@ def pickWreck():
 
 	if not findTarget('img/wreck.bmp'):
 		return False
-	mouse.leftClick()
-	key.keyPressEx(sc.Approach)
-
-	if not findOpenCargo():
-		return False
-	mouse.leftClick()
+	mouse.doubleClick()
 
 	print 'wait until cargo open'
 	while not findLootAll():
@@ -638,7 +624,7 @@ def repair():
 		while x < 0:
 			x, y = image.findImgR(panel.Full, 'img/ok.bmp')
 			if x < 0:
-				return False
+				x, y = image.findImgR(panel.Full, 'img/yes.bmp')
 			mouse.moveTo(x, y)
 			mouse.leftClick()
 		x, y = image.findImgR(panel.Full, 'img/repair_facilities.bmp')

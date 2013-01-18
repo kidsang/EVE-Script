@@ -36,7 +36,12 @@ def run():
 	if not space.setMissionWaypoint():
 		return False
 
-	pilot.autopilot()
+	if space.setMissionWaypoint():
+		pilot.autopilot()
+	else:
+		mouse.leftClick()
+		space.exitStartMap()
+		space.backToAgentStation()
 
 	print '<-- mission Technological Secrets (1 of 3)\n'
 	return True

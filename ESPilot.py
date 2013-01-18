@@ -56,6 +56,7 @@ def autopilot():
         print 'try to find target stargate or station'
         finded = ''
         for retry in range(7):
+            mouse.moveToP(panel.middle(panel.Full))
             print 'try: ' + str(retry + 1)
             if findTargetStation():
                 finded = 'station'

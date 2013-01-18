@@ -51,7 +51,7 @@ def run():
 		key.keyPressEx(sc.Lock)
 		time.sleep(10)
 		space.fireOne()
-		time.sleep(8)
+		time.sleep(50)
 		mouse.move(-200, 0)
 		mouse.leftClick()
 

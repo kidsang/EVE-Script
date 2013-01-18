@@ -134,7 +134,7 @@ def run():
             return False
 
         # # TODO:test
-        # bot = mission_of_mercy
+        # bot = saving_a_mans_career
 
         # # TODO:test
         # mouse.moveToP(panel.middle(panel.Full))

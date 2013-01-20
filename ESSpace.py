@@ -542,7 +542,7 @@ def openMissionDetail():
 
 	print 'wait until find mission objective'
 	while not findO():
-		mouse.moveToP(panel.middle(panel.MissionDetails))
+		mouse.moveTo(panel.MissionDetails[0] + 30, panel.MissionDetails[1] + 30)
 		mouse.leftClick()
 		mouse.wheel(-20)
 
